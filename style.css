@@ -8,7 +8,7 @@
   --rose:  #f7b9b5;
   --orange:#d97742;
   --cream: #fff7f0;
-
+  --coral:#d06e5f;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(0,0,0,.12);
 }
@@ -25,9 +25,7 @@ body{
   position:relative;
   overflow-x:hidden;
 }
-#free-quote { scroll-margin-top: 80px; }
-#home { scroll-margin-top: 80px; }
-
+#free-quote, #home { scroll-margin-top: 80px; }
 
 /* Site-wide background image + scrim */
 body::before{
@@ -148,12 +146,10 @@ main{ padding: clamp(16px, 3vw, 24px); }
   min-height: clamp(72dvh, 78vh, 92vh);
   display: grid; place-items: center;
   padding: clamp(24px, 4vw, 48px) clamp(16px, 5vw, 40px);
-  /* soft vignette so text pops on mobile */
   background: radial-gradient(1000px 520px at 75% 20%, rgba(0,0,0,.28), rgba(0,0,0,.6));
   isolation: isolate;
 }
 .hero::before{
-  /* faint texture pass that echoes your site bg but keeps copy readable */
   content:""; position:absolute; inset:0; z-index:-1;
   background:
     radial-gradient(800px 400px at 20% 15%, rgba(255,255,255,.04), transparent 60%),
@@ -228,7 +224,7 @@ main{ padding: clamp(16px, 3vw, 24px); }
   box-shadow: 0 6px 16px rgba(0,0,0,.18);
 }
 
-/* Artwork side */
+/* Artwork side base */
 .hero-art{
   position: relative;
   margin: 0; text-align:center;
@@ -248,6 +244,7 @@ main{ padding: clamp(16px, 3vw, 24px); }
 
 /* ============ RETRO PATTERN BURST HERO ART ============ */
 .pattern-burst{
+
   position: relative;
   display: grid; place-items: center;
   overflow: hidden;
@@ -257,6 +254,11 @@ main{ padding: clamp(16px, 3vw, 24px); }
   box-shadow: var(--shadow);
   text-align:center;
 }
+.pattern-burst::after{
+  /* subtle contrast layer to keep text readable on bright slices */
+  content:""; position:absolute; inset:0; z-index:0;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(0,0,0,.10), rgba(0,0,0,.25));
+}
 
 /* Animated radial gradient burst */
 .burst-bg{
@@ -265,7 +267,7 @@ main{ padding: clamp(16px, 3vw, 24px); }
     var(--rose) 0deg 60deg,
     var(--orange) 60deg 120deg,
     var(--peach) 120deg 180deg,
-    var(--muted, #d06e5f) 180deg 240deg,
+    var(--coral) 180deg 240deg,
     var(--orange) 240deg 300deg,
     var(--rose) 300deg 360deg
   );
@@ -294,9 +296,7 @@ main{ padding: clamp(16px, 3vw, 24px); }
 }
 
 /* sparkles + bubbles floating */
-.sparkles{
-  position:absolute; inset:0;
-}
+.sparkles{ position:absolute; inset:0; }
 .star, .bubble{
   position:absolute; border-radius:50%; background: var(--cream);
   opacity:.85; animation: floatUp 6s ease-in-out infinite;
@@ -315,7 +315,6 @@ main{ padding: clamp(16px, 3vw, 24px); }
   50%{ transform: translateY(-16px) scale(1.2); opacity:1; }
   100%{ transform: translateY(0) scale(1); opacity:.8; }
 }
-
 
 /* fizzy decorative orbs */
 .orb{
@@ -404,14 +403,14 @@ main{ padding: clamp(16px, 3vw, 24px); }
 }
 
 /* ============ SERVICES ============ */
-#services { padding: 80px 20px; background-color: #f7b9b5; text-align: center; }
-#services h2 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: #5B3A29; margin-bottom: 10px; }
-.section-intro { max-width: 600px; margin: 0 auto 50px; color: #6b4e3b; font-size: 1.1rem; }
+#services { padding: 80px 20px; background-color: var(--rose); text-align: center; }
+#services h2 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: var(--brown-900); margin-bottom: 10px; }
+.section-intro { max-width: 600px; margin: 0 auto 50px; color: var(--brown); font-size: 1.1rem; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .service-card { background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: transform 0.2s ease; }
 .service-card:hover { transform: translateY(-5px); }
-.service-card h3 { font-family: 'Poppins', sans-serif; color: #FF7F50; margin-bottom: 15px; font-size: 1.5rem; }
-.service-card p { color: #5B3A29; font-size: 1rem; line-height: 1.5; }
+.service-card h3 { font-family: 'Poppins', sans-serif; color: var(--orange); margin-bottom: 15px; font-size: 1.5rem; }
+.service-card p { color: var(--brown-900); font-size: 1rem; line-height: 1.5; }
 
 /* ============ FREE QUOTE ============ */
 .quote .section-intro{ max-width: 700px; margin: 0 auto 24px; color: rgba(255,255,255,.9); }
